@@ -1,0 +1,93 @@
+команды
+
+hostname: achanel42
+
+root password: shazam
+
+login: achanel
+password: amazon1
+
+crypt password: borntocode
+
+список разделов lsblk
+
+добаление юзера в группу sudo: adduser <username> sudo
+
+зайти под суперпользователем su -
+
+статус SSH systemctl status ssh
+
+статус UFW sudo ufw status
+
+IP hostname -I
+
+sudo adduser <username>
+getent passwd <username>
+
+BONUS
+#$ sudo tar -zxvf /var/www/html/latest.tar.gz
+
+database_achanel
+
+пользователь базы данных achanel-2
+пароль mypass
+
+проверить существование пользователя mariadb -u achanel-2 -p
+
+CHECK LIST
+
+1!
+ufw status: sudo ufw status
+ssh status: sudo service ssh status
+OS: uname -a
+
+2!
+achanel in groups sudo: getent group sudo
+				user42: getent group user42
+passwrd rules: sudo chage -l achanel
+
+creating user: sudo adduser <username>
+creatin group: sudo addgroup <group_name>
+adding user into group: sudo adduser <username> <group_name>
+
+3!
+hostname: hostname
+modification hostname: sudo nano /etc/hostname
+						sudo nano /etc/hosts
+						sudo reboot
+partitions of VM: lsblk
+
+4!
+sudo was installed: dpkg -l | grep sudo
+adding new user to sudo group: adduser <username> sudo
+sudo rules: sudo nano /etc/sudoers.d/sudo_rules
+existing /var/log/sudo/: ls /var/log/sudo/
+sudo logs: cat /var/log/sudo/sudo_logs
+
+5!
+ufw was installed: dpkg -l | grep ufw
+ufw working: sudo ufw status
+adding new rule: sudo ufw allow 8080
+deleting rules: sudo ufw delete <number_of_rule>
+
+6!
+connecting with ssh: ssh <username>@<ip-address> -p 4242
+ssh was installed: dpkg -l | grep ssh
+ssh configuration: sudo nano /etc/ssh/sshd_config
+
+7!
+script: nano /home/achanel/monitoring.sh
+every 30sec: */30 * * * * * in nano /etc/crontab
+
+bonus!
+partitions of VM: lsblk
+lighttpd: dpkg -l | grep lighttpd
+	80 port in ufw: sudo ufw status
+MariaDB: dpkg -l | grep mariadb-server
+	entering MariaDB: mariadb -u achanel-2 -p (pass: mypass)
+	database: SHOW DATABASES;
+	exit: exit
+PHP: dpkg -l | grep php
+FTP: dpkg -l | grep vsftpd
+	21 port in ufw: sudo ufw status
+	connecting: ftp 127.0.0.1
